@@ -2,4 +2,4 @@ baseURL = 'https://danielkopec.eu'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
 theme = 're-terminal'
-canonifyURLs = true
+canonifyURLs = false

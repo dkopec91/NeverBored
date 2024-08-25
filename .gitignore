@@ -1,0 +1,5 @@
+public/
+
+.gitignore.bak
+hugo.yaml.bak
+hugo.toml.bak

@@ -1,0 +1,13 @@
+<!-- model viewer -->
+<model-viewer
+	src="{{.Page.RelPermalink}}/images/{{ .Get "src" }}"
+	alt="{{ .Get "alt" }}"
+	touch-action="pan-y"
+	shadow-intensity="1"
+	interaction-prompt-style="basic"
+	rotation-per-second="400%"
+	powerPreference="low-power"
+	camera-controls
+	disable-tap
+	auto-rotate />	
+	

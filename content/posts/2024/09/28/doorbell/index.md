@@ -5,11 +5,14 @@ draft: false
 tags: [ '3D Print', 'Aesthetic']
 showFullContent: true
 ---
-Model:
+### Model:
+
 {{< modelviewer src="doorbell.glb" alt="Doorbell cover" >}}
 
-Before:
+### Before:
+
 ![Before](images/before.jpg)
 
-After:
+### After:
+
 ![After](images/after.jpg)

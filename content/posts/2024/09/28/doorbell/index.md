@@ -11,8 +11,8 @@ showFullContent: true
 
 ### Before:
 
-![Before](images/before.jpg)
+{{< zoomable src="before.jpg" alt="Before" >}}
 
 ### After:
 
-![After](images/after.jpg)
+{{< zoomable src="after.jpg" alt="After" >}}

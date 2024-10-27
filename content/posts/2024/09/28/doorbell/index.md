@@ -9,6 +9,8 @@ showFullContent: true
 
 {{< modelviewer src="doorbell.glb" alt="Doorbell cover" >}}
 
+{{< modelfiles mkrs="Dome-like%20cover%20with%20cutouts/76034.html" fname="DomeCover">}}
+
 ### Before:
 
 {{< zoomable src="before.jpg" alt="Before" >}}

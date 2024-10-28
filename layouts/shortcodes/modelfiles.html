@@ -1,21 +1,13 @@
 <!-- model files -->
-<p>
-		<table width="100%">
-			<tr>
-				<th>MakerOnline.com</th>
-				<th>STL (High Refinement)</th>
-				<th>STL (Low Refinement)</th>
-				<th>3MF</th>
-				<th>F3D</th>
-				<th>STEP</th>
-			</tr>
-			<tr>
-				<td><a href="https://www.makeronline.com/en/model/{{ .Get "mkrs" }}" target="blank">VIEW</a></td>
-				<td><a href="{{.Page.RelPermalink}}models/{{ .Get "fname" }}_HighRes.stl" target="blank">GET</a></td>
-				<td><a href="{{.Page.RelPermalink}}models/{{ .Get "fname" }}_LowRes.stl" target="blank">GET</a></td>
-				<td><a href="{{.Page.RelPermalink}}models/{{ .Get "fname" }}.3mf" target="blank">GET</a></td>
-				<td><a href="{{.Page.RelPermalink}}models/{{ .Get "fname" }}.f3d" target="blank">GET</a></td>
-				<td><a href="{{.Page.RelPermalink}}models/{{ .Get "fname" }}.step" target="blank">GET</a></td>
-			</tr>
-		</table>
-</p>
+
+	<table width="100%">
+		<tr>
+			<th><a href="https://www.makeronline.com/en/model/{{ .Get "mkrs" }}" target="blank">MakerOnline.com</a></th>
+			<th><a href="{{.Page.RelPermalink}}models/{{ .Get "fname" }}_HighRes.stl" target="blank">STL (High Detail)</a></th>
+			<th><a href="{{.Page.RelPermalink}}models/{{ .Get "fname" }}_LowRes.stl" target="blank">STL (Low Detail)</a></th>
+			<th><a href="{{.Page.RelPermalink}}models/{{ .Get "fname" }}.3mf" target="blank">3MF</a></th>
+			<th><a href="{{.Page.RelPermalink}}models/{{ .Get "fname" }}.f3d" target="blank">F3D</a></th>
+			<th><a href="{{.Page.RelPermalink}}models/{{ .Get "fname" }}.step" target="blank">STEP</a></th>
+		</tr>
+	</table>
+

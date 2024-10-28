@@ -1,8 +1,5 @@
 <!-- zoomable -->
-<p>
-	<img
-		alt = "{{ .Get "alt" }}"
-		src = "{{.Page.RelPermalink}}images/lq_{{ .Get "src" }}"
-		data-zoom-src="{{.Page.RelPermalink}}images/hq_{{ .Get "src" }}"
-		class = "medium-zoom-image"	/>
-</p>
+<img alt = "{{ .Get "alt" }}"
+	src = "{{.Page.RelPermalink}}images/lq_{{ .Get "src" }}"
+	data-zoom-src="{{.Page.RelPermalink}}images/hq_{{ .Get "src" }}"
+	class = "medium-zoom-image"	/>

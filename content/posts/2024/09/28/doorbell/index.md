@@ -5,16 +5,11 @@ draft: false
 tags: [ '3D Print', 'Aesthetic']
 showFullContent: true
 ---
-### Model:
-
-{{< modelviewer src="doorbell.glb" alt="Doorbell cover" >}}
 
 {{< modelfiles mkrs="Dome-like%20cover%20with%20cutouts/76034.html" fname="DomeCover">}}
 
-### Before:
+{{< modelviewer src="doorbell.glb" alt="Doorbell cover" >}}
 
-{{< zoomable src="before.jpg" alt="Before" >}}
-
-### After:
-
-{{< zoomable src="after.jpg" alt="After" >}}
+|Before|After|
+|------|-----|
+|{{< zoomable src="before.jpg" alt="Before" >}} | {{< zoomable src="after.jpg" alt="After" >}}|

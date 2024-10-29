@@ -11,5 +11,5 @@ showFullContent: true
 {{< modelviewer src="doorbell.glb" alt="Doorbell cover" >}}
 
 |Before|After|
-|------|-----|
+|:----:|:---:|
 |{{< zoomable src="before.jpg" alt="Before" >}} | {{< zoomable src="after.jpg" alt="After" >}}|

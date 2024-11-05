@@ -2,14 +2,34 @@
 <script type="module" src="{{ .Site.BaseURL }}scripts/model-viewer.min.js"></script>
 
 <script>
-const images = Array.from(document.querySelectorAll("img.medium-zoom-image"));
-images.forEach(img => {
-  mediumZoom(img, {
-    margin: 10, /* The space outside the zoomed image */
-	background: "#222",
-    scrollOffset: 40, /* The number of pixels to scroll to close the zoom */
-    container: null, /* The viewport to render the zoom in */
-    template: null /* The template element to display on zoom */
+  const images = Array.from(document.querySelectorAll("img.medium-zoom-image"));
+  images.forEach(img => {
+    mediumZoom(img, {
+      margin: 10, /* The space outside the zoomed image */
+      background: "#222",
+      scrollOffset: 40, /* The number of pixels to scroll to close the zoom */
+      container: null, /* The viewport to render the zoom in */
+      template: null /* The template element to display on zoom */
+    });
   });
-});
+
+  function updateBorderWidth() {
+    const screenWidth = window.innerWidth;
+    const dynamicStart = 400;
+    const dynamicEnd = 800;
+
+    let borderWidth = "1px";
+
+    if (screenWidth > dynamicStart && screenWidth < dynamicEnd) {
+      borderWidth = 1 + Math.floor((screenWidth - dynamicStart) / ((dynamicEnd - dynamicStart) / 7)) + 'px';
+    }
+    if (screenWidth >= dynamicEnd) {
+      borderWidth = "8px";
+    }
+    document.documentElement.style.setProperty('--dynamic-border-width', borderWidth);
+  }
+
+  updateBorderWidth();
+  window.addEventListener('resize', updateBorderWidth);
+
 </script>

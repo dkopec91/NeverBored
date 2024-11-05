@@ -1,3 +1,12 @@
+:root {
+  --dynamic-border-width: 8px;
+}
+
+.medium-zoom-image {
+  border-width: var(--dynamic-border-width);
+  padding: var(--dynamic-border-width);
+}
+
 .medium-zoom-overlay,
 .medium-zoom-image--opened {
   z-index: 999;

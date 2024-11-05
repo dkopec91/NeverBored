@@ -17,7 +17,7 @@ showFullContent: true
         <th style="text-align:center" colspan=2>After</th>
     </tr>
     <tr>
-        <td style="padding-left:22px;padding-right:22px;">
+        <td style="width:34%;">
             {{< zoomable src="before.jpg" alt="Before" >}}
         </td>
         <td style="border-right:0px;">

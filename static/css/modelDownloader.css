@@ -1,0 +1,64 @@
+.model-download {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.model-download th {
+    text-align: center;
+    padding: 0;
+}
+
+.model-download button {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.buttonCell {
+    width: 45px;
+}
+
+.download-option .content-wrapper,
+.download-option .label-wrapper {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease-out;
+}
+
+.download-option.expanded .content-wrapper,
+.download-option.expanded .label-wrapper {
+    height: 45px;
+}
+
+.download-option th {
+    border-width: 0;
+}
+
+.download-option.expanded th {
+    border-width: 1px;
+}
+
+.download-option.expanded:hover {
+    background-color: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+.download-option.expanded .content-wrapper {
+    padding: 1px;
+}
+
+.label-wrapper p {
+    margin: 12px;
+}
+
+.download-option.last-row {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+.download-options-switch {
+    font-size: 1.75em;
+    margin: 1px !important;
+    width: 43px !important;
+    height: 43px !important;
+}

@@ -6,7 +6,7 @@
   images.forEach(img => {
     mediumZoom(img, {
       margin: 10, /* The space outside the zoomed image */
-      background: "#222",
+      background: "#222129",
       scrollOffset: 40, /* The number of pixels to scroll to close the zoom */
       container: null, /* The viewport to render the zoom in */
       template: null /* The template element to display on zoom */
@@ -18,18 +18,22 @@
     const dynamicStart = 400;
     const dynamicEnd = 800;
 
-    let borderWidth = "1px";
-
-    if (screenWidth > dynamicStart && screenWidth < dynamicEnd) {
-      borderWidth = 1 + Math.floor((screenWidth - dynamicStart) / ((dynamicEnd - dynamicStart) / 7)) + 'px';
-    }
-    if (screenWidth >= dynamicEnd) {
-      borderWidth = "8px";
-    }
-    document.documentElement.style.setProperty('--dynamic-border-width', borderWidth);
+    const borderWidth = Math.min(8, Math.max(1, 1 + Math.floor((screenWidth - dynamicStart) / ((dynamicEnd - dynamicStart) / 7))));
+    document.documentElement.style.setProperty('--dynamic-border-width', `${borderWidth}px`);
   }
 
   updateBorderWidth();
   window.addEventListener('resize', updateBorderWidth);
+
+  function toggleOptions(button) {
+    const isExpanded = button.getAttribute("aria-expanded") === "true";
+    button.setAttribute("aria-expanded", !isExpanded);
+    button.innerText = isExpanded ? "⬇" : "⬆";
+
+    const table = button.closest('.model-download');    
+    table.querySelectorAll('.download-option').forEach(row => {
+        row.classList.toggle('expanded');
+    });
+  }
 
 </script>

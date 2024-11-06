@@ -1,13 +1,74 @@
 <!-- model files -->
 <div style="overflow-x:auto">
-	<table width="100%">
+	<table class="model-download">
 		<tr>
-			<th><a href="https://www.makeronline.com/en/model/{{ .Get "mkrs" }}" target="blank">MakerOnline.com</a></th>
-			<th><a href="{{.Page.RelPermalink}}models/{{ .Get "fname" }}_HighRes.stl" target="blank">STL (High Detail)</a></th>
-			<th><a href="{{.Page.RelPermalink}}models/{{ .Get "fname" }}_LowRes.stl" target="blank">STL (Low Detail)</a></th>
-			<th><a href="{{.Page.RelPermalink}}models/{{ .Get "fname" }}.3mf" target="blank">3MF</a></th>
-			<th><a href="{{.Page.RelPermalink}}models/{{ .Get "fname" }}.f3d" target="blank">F3D</a></th>
-			<th><a href="{{.Page.RelPermalink}}models/{{ .Get "fname" }}.step" target="blank">STEP</a></th>
+			<th>
+				<a href="https://www.makeronline.com/en/model/{{ .Get "mkrs" }}" target="_blank">Get from
+					MakerOnline.com</a>
+			</th>
+			<th class="buttonCell">
+				<button class="download-options-switch" onclick="toggleOptions(this)" aria-label="Toggle download options">⬇</button>
+			</th>
+		</tr>
+		<tr class="download-option">
+			<th>
+				<div class="label-wrapper">
+					<p>STL (High Detail)</p>
+				</div>
+			</th>
+			<th class="buttonCell">
+				<div class="content-wrapper">
+					<a href="{{.Page.RelPermalink}}models/{{ .Get "fname"}}_HighRes.stl" target="_blank"><button>💾</button></a>
+				</div>
+			</th>
+		</tr>
+		<tr class="download-option">
+			<th>
+				<div class="label-wrapper">
+					<p>STL (Low Detail)</p>
+				</div>
+			</th>
+			<th class="buttonCell">
+				<div class="content-wrapper">
+					<a href="{{.Page.RelPermalink}}models/{{ .Get "fname"}}_LowRes.stl" target="_blank"><button>💾</button></a>
+				</div>
+			</th>
+		</tr>
+		<tr class="download-option">
+			<th>
+				<div class="label-wrapper">
+					<p>3MF</p>
+				</div>
+			</th>
+			<th class="buttonCell">
+				<div class="content-wrapper">
+					<a href="{{.Page.RelPermalink}}models/{{ .Get "fname"}}.3mf" target="_blank"><button>💾</button></a>
+				</div>
+			</th>
+		</tr>
+		<tr class="download-option">
+			<th>
+				<div class="label-wrapper">
+					<p>F3D</p>
+				</div>
+			</th>
+			<th class="buttonCell">
+				<div class="content-wrapper">
+					<a href="{{.Page.RelPermalink}}models/{{ .Get "fname"}}.f3d" target="_blank"><button>💾</button></a>
+				</div>
+			</th>
+		</tr>
+		<tr class="download-option last-row">
+			<th>
+				<div class="label-wrapper">
+					<p>STEP</p>
+				</div>
+			</th>
+			<th class="buttonCell">
+				<div class="content-wrapper">
+					<a href="{{.Page.RelPermalink}}models/{{ .Get "fname"}}.step" target="_blank"><button>💾</button></a>
+				</div>
+			</th>
 		</tr>
 	</table>
 </div>

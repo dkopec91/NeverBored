@@ -28,7 +28,6 @@
   function toggleOptions(button) {
     const isExpanded = button.getAttribute("aria-expanded") === "true";
     button.setAttribute("aria-expanded", !isExpanded);
-    button.innerText = isExpanded ? "⬇" : "⬆";
 
     const table = button.closest('.model-download');    
     table.querySelectorAll('.download-option').forEach(row => {

@@ -1,13 +1,14 @@
 <!-- model files -->
 <div style="overflow-x:auto">
 	<table class="model-download">
-		<tr>
+		<tr class="header-row">
 			<th>
-				<a href="https://www.makeronline.com/en/model/{{ .Get "mkrs" }}" target="_blank">Get from
-					MakerOnline.com</a>
+				<a href="https://www.makeronline.com/en/model/{{ .Get "mkrs" }}" target="_blank">Get from MakerOnline.com</a>
 			</th>
 			<th class="buttonCell">
-				<button class="download-options-switch" onclick="toggleOptions(this)" aria-label="Toggle download options">⬇</button>
+				<button class="download-options-switch" onclick="toggleOptions(this)"
+					aria-label="Toggle download options"
+					aria-expanded="false"></button>
 			</th>
 		</tr>
 		<tr class="download-option">
@@ -18,7 +19,7 @@
 			</th>
 			<th class="buttonCell">
 				<div class="content-wrapper">
-					<a href="{{.Page.RelPermalink}}models/{{ .Get "fname"}}_HighRes.stl" target="_blank"><button>💾</button></a>
+					<a href="{{.Page.RelPermalink}}models/{{ .Get "fname"}}_HighRes.stl" target="_blank"><button></button></a>
 				</div>
 			</th>
 		</tr>
@@ -30,7 +31,7 @@
 			</th>
 			<th class="buttonCell">
 				<div class="content-wrapper">
-					<a href="{{.Page.RelPermalink}}models/{{ .Get "fname"}}_LowRes.stl" target="_blank"><button>💾</button></a>
+					<a href="{{.Page.RelPermalink}}models/{{ .Get "fname"}}_LowRes.stl" target="_blank"><button></button></a>
 				</div>
 			</th>
 		</tr>
@@ -42,7 +43,7 @@
 			</th>
 			<th class="buttonCell">
 				<div class="content-wrapper">
-					<a href="{{.Page.RelPermalink}}models/{{ .Get "fname"}}.3mf" target="_blank"><button>💾</button></a>
+					<a href="{{.Page.RelPermalink}}models/{{ .Get "fname"}}.3mf" target="_blank"><button></button></a>
 				</div>
 			</th>
 		</tr>
@@ -54,7 +55,7 @@
 			</th>
 			<th class="buttonCell">
 				<div class="content-wrapper">
-					<a href="{{.Page.RelPermalink}}models/{{ .Get "fname"}}.f3d" target="_blank"><button>💾</button></a>
+					<a href="{{.Page.RelPermalink}}models/{{ .Get "fname"}}.f3d" target="_blank"><button></button></a>
 				</div>
 			</th>
 		</tr>
@@ -66,9 +67,23 @@
 			</th>
 			<th class="buttonCell">
 				<div class="content-wrapper">
-					<a href="{{.Page.RelPermalink}}models/{{ .Get "fname"}}.step" target="_blank"><button>💾</button></a>
+					<a href="{{.Page.RelPermalink}}models/{{ .Get "fname"}}.step" target="_blank"><button></button></a>
 				</div>
 			</th>
 		</tr>
 	</table>
 </div>
+
+<style>
+	.download-option button {
+		background-image: url("{{ .Site.BaseURL }}icons/saveIcon.svg");
+	}
+
+	.download-options-switch[aria-expanded="false"] {
+		background-image: url("{{ .Site.BaseURL }}icons/arrowDown.svg");
+	}
+
+	.download-options-switch[aria-expanded="true"] {		
+		background-image: url("{{ .Site.BaseURL }}icons/arrowUp.svg");
+	}
+</style>

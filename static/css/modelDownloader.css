@@ -57,8 +57,22 @@
 }
 
 .download-options-switch {
-    font-size: 1.75em;
     margin: 1px !important;
-    width: 43px !important;
-    height: 43px !important;
+    width: 45px !important;
+    height: 45px !important;
+}
+
+.header-row th {
+    line-height: 0;
+    height: 45px !important;
+}
+
+.download-option button,
+.download-options-switch[aria-expanded="false"],
+.download-options-switch[aria-expanded="true"] {
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 45px;
+    height: 45px;
+    border: none;
 }

@@ -1,0 +1,17 @@
+{{ define "main" }}
+{{ with .Content }}
+<div class="index-content">
+  {{ . }}
+</div>
+{{ end }}
+<div class="posts">
+  {{ range .Data.Pages.GroupByDate "January 2006" }}
+  <h3>{{ .Key }}</h3>
+  <ul>
+    {{ range .Pages }}
+    <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+    {{ end }}
+  </ul>
+  {{ end }}
+</div>
+{{ end }}

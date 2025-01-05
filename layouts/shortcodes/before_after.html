@@ -1,0 +1,61 @@
+{{ $maxImageCount := 5 }}
+{{ $beforeImages := 0.0 }}
+{{ $afterImages := 0.0 }}
+
+{{ $beforeImagesPath := path.Join (replace .Page.File.Path "index.md" "") "images" "hq_before[NUMBER].jpg"}}
+{{ $afterImagesPath := path.Join (replace .Page.File.Path "index.md" "") "images" "hq_after[NUMBER].jpg"}}
+
+{{ range $num := (seq $maxImageCount) }}
+
+    {{ $beforeImage := replace $beforeImagesPath "[NUMBER]" . }}
+    {{ $afterImage := replace $afterImagesPath "[NUMBER]" . }}
+
+    {{ if fileExists $beforeImage }}
+        {{ $beforeImages = add $beforeImages 1 }}
+    {{ end }}
+
+    {{ if fileExists $afterImage }}
+        {{ $afterImages = add $afterImages 1 }}
+    {{ end }}
+
+{{ end }}
+
+{{ $totalImageCount := add $beforeImages $afterImages }}
+
+{{ if gt $totalImageCount 0 }}
+
+    {{ $beforeRatio := div $beforeImages $totalImageCount 0.01 }}
+    {{ $beforeRatio = math.Round $beforeRatio }}
+
+    <table>
+        <tr>
+            <th style="text-align:center; width: {{ $beforeRatio }}%" colspan={{ $beforeImages }}>Before</th>
+            <th style="text-align:center" colspan={{ $afterImages }}>After</th>
+        </tr>
+        <tr>
+            {{ range $num := (seq $beforeImages) }}
+                {{ $path := replace $beforeImagesPath "[NUMBER]" . }}
+                {{if fileExists $path}}
+                    <td>            
+                        <img alt = "Before"
+                            src = "{{$.Page.RelPermalink}}images/lq_before{{ . }}.jpg"
+                            data-zoom-src="{{$.Page.RelPermalink}}images/hq_before{{ . }}.jpg"
+                            class = "medium-zoom-image"	/>
+                    </td>
+                {{ end }}
+            {{ end }}         
+            {{ range $num := (seq $afterImages) }}
+                {{ $path := replace $afterImagesPath "[NUMBER]" . }}
+                {{if fileExists $path}}
+                    <td>            
+                        <img alt = "After"
+                            src = "{{$.Page.RelPermalink}}images/lq_after{{ . }}.jpg"
+                            data-zoom-src="{{$.Page.RelPermalink}}images/hq_after{{ . }}.jpg"
+                            class = "medium-zoom-image"	/>
+                    </td>
+                {{ end }}
+            {{ end }}
+        </tr>
+    </table>
+
+{{ end }}

@@ -1,3 +1,5 @@
 public/
 *.bak
 .vscode/settings.json
+
+.codegpt

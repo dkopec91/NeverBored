@@ -10,6 +10,4 @@ showFullContent: true
 
 {{< modelviewer src="DoorHandleReplacement.glb" alt="Door handle replacement" >}}
 
-|Before|After|
-|:----:|:---:|
-|{{< zoomable src="before.jpg" alt="Before" >}} | {{< zoomable src="after.jpg" alt="After" >}}|
+{{< before_after >}}

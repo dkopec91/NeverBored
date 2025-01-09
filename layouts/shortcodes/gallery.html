@@ -1,0 +1,54 @@
+{{ $maxImageCount := 30 }}
+{{ $imagesCount := 0 }}
+{{ $cellCount := 1 }}
+
+{{ $headerName := default "Gallery" (index .Params "headerName") }}
+{{ $fileNameHq := default "hq_img[NUMBER].jpg" (replace "hq_img[NUMBER].jpg" "img" (index .Params "image")) }}
+{{ $fileNameLq := replace $fileNameHq "hq_" "lq_" }}
+{{ $imagesPath := path.Join (replace .Page.File.Path "index.md" "") "images" $fileNameHq }}
+
+{{ range $num := (seq $maxImageCount) }}
+    {{ if fileExists (replace $imagesPath "[NUMBER]" . ) }}
+        {{ $imagesCount = add $imagesCount 1 }}
+    {{ end }}
+{{ end }}
+
+{{ if gt $imagesCount 0 }}
+
+    {{ range seq 5 }}
+        {{ if modBool $imagesCount . }}
+            {{ $cellCount = . }}
+        {{ end }}
+    {{ end }}
+
+    {{ $startRowIndex := 1 }}
+    {{ $endRowIndex := $cellCount }}
+
+    <table>
+        <tr>
+            <th style="text-align:center" colspan={{ $cellCount }}>{{ $headerName }}</th>
+        </tr>
+        {{ range $num := (seq $imagesCount) }}
+            {{ $fileLq := replace $fileNameLq "[NUMBER]" . }}
+            {{ $fileHq := replace $fileNameHq "[NUMBER]" . }}
+
+            {{ if eq $num $startRowIndex }}
+                <tr>
+            {{ end }}
+
+                    <td>
+                        <img alt = "{{ $headerName }}: Image {{ . }}/{{ $imagesCount }}"
+                            src = "{{$.Page.RelPermalink}}images/{{$fileLq}}"
+                            data-zoom-src="{{$.Page.RelPermalink}}images/{{$fileHq}}"
+                            class = "medium-zoom-image"	/>
+                    </td>
+            
+            {{ if eq $num $endRowIndex }}
+                </tr>
+                {{ $startRowIndex = add $startRowIndex $cellCount }}
+                {{ $endRowIndex = add $endRowIndex $cellCount }}
+            {{ end }}
+        {{ end }}
+    </table>
+
+{{ end }}

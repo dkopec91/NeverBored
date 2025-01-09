@@ -36,18 +36,18 @@
             {{ range $num := (seq $beforeImages) }}
                 {{ $path := replace $beforeImagesPath "[NUMBER]" . }}
                 {{if fileExists $path}}
-                    <td>            
+                    <td>
                         <img alt = "Before"
                             src = "{{$.Page.RelPermalink}}images/lq_before{{ . }}.jpg"
                             data-zoom-src="{{$.Page.RelPermalink}}images/hq_before{{ . }}.jpg"
                             class = "medium-zoom-image"	/>
                     </td>
                 {{ end }}
-            {{ end }}         
+            {{ end }}
             {{ range $num := (seq $afterImages) }}
                 {{ $path := replace $afterImagesPath "[NUMBER]" . }}
                 {{if fileExists $path}}
-                    <td>            
+                    <td>
                         <img alt = "After"
                             src = "{{$.Page.RelPermalink}}images/lq_after{{ . }}.jpg"
                             data-zoom-src="{{$.Page.RelPermalink}}images/hq_after{{ . }}.jpg"

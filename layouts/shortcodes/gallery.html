@@ -2,8 +2,8 @@
 {{ $imagesCount := 0 }}
 {{ $cellCount := 1 }}
 
-{{ $headerName := default "Gallery" (index .Params "headerName") }}
-{{ $fileNameHq := default "hq_img[NUMBER].jpg" (replace "hq_img[NUMBER].jpg" "img" (index .Params "image")) }}
+{{ $headerName := .Get "headerName" | default "Gallery" }}
+{{ $fileNameHq := replace "hq_FILENAME[NUMBER].jpg" "FILENAME" (.Get "imageNames" | default "img") }}
 {{ $fileNameLq := replace $fileNameHq "hq_" "lq_" }}
 {{ $imagesPath := path.Join (replace .Page.File.Path "index.md" "") "images" $fileNameHq }}
 

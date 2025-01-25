@@ -5,4 +5,5 @@ draft: false
 showFullContent: true
 ---
 Nothing to see here..
-{{< zoomable src="hello-world.png" alt="Hello world!" >}}
+
+{{< zoomable src="hello-world.webp" alt="Hello world!" >}}

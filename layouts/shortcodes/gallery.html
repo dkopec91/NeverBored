@@ -3,7 +3,7 @@
 {{ $cellCount := 1 }}
 
 {{ $headerName := .Get "headerName" | default "Gallery" }}
-{{ $fileNameHq := replace "hq_FILENAME[NUMBER].jpg" "FILENAME" (.Get "imageNames" | default "img") }}
+{{ $fileNameHq := replace "hq_FILENAME[NUMBER].webp" "FILENAME" (.Get "imageNames" | default "img") }}
 {{ $fileNameLq := replace $fileNameHq "hq_" "lq_" }}
 {{ $imagesPath := path.Join (replace .Page.File.Path "index.md" "") "images" $fileNameHq }}
 

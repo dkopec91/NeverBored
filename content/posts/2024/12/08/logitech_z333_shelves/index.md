@@ -2,7 +2,7 @@
 title: "Logitech Z333 shelves"
 date: 2024-12-08T00:16:09+01:00
 draft: false
-tags: [ '3D Print', 'Functional']
+tags: [ '3D Print', 'Functional', 'Workspace']
 showFullContent: true
 ---
 

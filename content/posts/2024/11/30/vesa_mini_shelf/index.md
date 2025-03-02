@@ -2,7 +2,7 @@
 title: "VESA shelf for a desk-mounted lamp"
 date: 2024-11-30T20:15:21+01:00
 draft: false
-tags: [ '3D Print', 'Functional']
+tags: [ '3D Print', 'Functional', 'Workspace']
 showFullContent: true
 ---
 

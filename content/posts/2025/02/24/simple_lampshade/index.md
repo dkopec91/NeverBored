@@ -2,7 +2,7 @@
 title: "Simple lampshade"
 date: 2025-02-24T12:05:59+01:00
 draft: false
-tags: [ '3D Print', 'Functional']
+tags: [ '3D Print', 'Functional', 'Workspace']
 showFullContent: true
 ---
 

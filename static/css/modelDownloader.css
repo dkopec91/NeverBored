@@ -3,9 +3,15 @@
     border-collapse: collapse;
 }
 
-.model-download th {
+.model-download td {
     text-align: center;
+    border-style: solid;
     padding: 0;
+}
+
+.model-download tr:last-child {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
 }
 
 .model-download button {
@@ -31,11 +37,11 @@
     height: 45px;
 }
 
-.download-option th {
+.download-option td {
     border-width: 0;
 }
 
-.download-option.expanded th {
+.download-option.expanded td {
     border-width: 1px;
 }
 
@@ -51,18 +57,13 @@
     margin: 12px;
 }
 
-.download-option.last-row {
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-}
-
 .download-options-switch {
     margin: 1px !important;
     width: 45px !important;
     height: 45px !important;
 }
 
-.header-row th {
+.header-row td {
     line-height: 0;
     height: 45px !important;
 }
@@ -75,4 +76,16 @@
     width: 45px;
     height: 45px;
     border: none;
+}
+
+.download-option button {
+    background-image: url("../icons/saveIcon.svg");
+}
+
+.download-options-switch[aria-expanded="false"] {
+    background-image: url("../icons/arrowDown.svg");
+}
+
+.download-options-switch[aria-expanded="true"] {		
+    background-image: url("../icons/arrowUp.svg");
 }

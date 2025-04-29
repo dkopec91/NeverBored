@@ -1,89 +1,73 @@
 <!-- model files -->
+{{/* SET DEFAULTS */}}
+
+	{{ $defaults := slice "_LowRes.stl" "_HighRes.stl" ".3mf" ".f3d" ".step" }}
+	{{ $labels := dict
+		"_HighRes.stl" "STL (High Detail)"
+		"_LowRes.stl" "STL (Low Detail)"
+		".3mf" "3MF"
+		".f3d" "F3D"
+		".step" "STEP"
+	}}
+
+
+{{/* LOAD PARAMETERS */}}
+
+	{{ $baseUrl := print .Page.RelPermalink "models/" (.Get "fname") }}
+	{{ $toRemoveRaw := .Get "excludedDefaults" }}
+	{{ $toPrependRaw := .Get "prependDownloads" }}
+	{{ $toAppendRaw := .Get "appendDownloads" }}
+	{{ $extendedLabelsRaw := .Get "extendLabels" }}
+	{{ $toRemove := cond (isset .Params "excludedDefaults") (split $toRemoveRaw ",") (slice) }}
+	{{ $toPrepend := cond (isset .Params "prependDownloads") (split $toPrependRaw ",") (slice) }}
+	{{ $toAppend := cond (isset .Params "appendDownloads") (split $toAppendRaw ",") (slice) }}
+	{{ $extendedLabels := cond (isset .Params "extendLabels") (split $extendedLabelsRaw ",") (slice) }}
+
+
+{{/* EXCLUDE UNWANTED DEFAULTS, COMBINE THE FINAL LIST */}}
+
+	{{ $filtered := slice }}
+	{{ range $defaults }}
+	{{ if not (in $toRemove .) }}
+		{{ $filtered = $filtered | append . }}
+	{{ end }}
+	{{ end }}
+	{{ $finalSuffixArray := union (union $toPrepend $filtered) $toAppend }}
+
+
+{{/* EXTEND THE LABELS DICTIONARY */}}
+
+	{{ range $extendedLabels }}
+		{{ $entry := split . "=" }}
+		{{ $labels = merge $labels (dict (index $entry 0) (index $entry 1)) }}
+	{{ end }}
+
+
 <div style="overflow-x:auto">
 	<table class="model-download">
 		<tr class="header-row">
-			<th>
-				<a href="https://www.makeronline.com/en/model/{{ .Get "mkrs" }}" target="_blank">Get from MakerOnline.com</a>
-			</th>
-			<th class="buttonCell">
+			<td>
+				<a href="https://www.makeronline.com/en/model/{{ .Get "mkrs" }}" target="_blank" rel="noopener">Get from MakerOnline.com</a>
+			</td>
+			<td class="buttonCell">
 				<button class="download-options-switch" onclick="toggleOptions(this)"
 					aria-label="Toggle download options"
 					aria-expanded="false"></button>
-			</th>
+			</td>
 		</tr>
-		<tr class="download-option">
-			<th>
-				<div class="label-wrapper">
-					<p>STL (High Detail)</p>
-				</div>
-			</th>
-			<th class="buttonCell">
-				<div class="content-wrapper">
-					<a href="{{.Page.RelPermalink}}models/{{ .Get "fname"}}_HighRes.stl" target="_blank"><button></button></a>
-				</div>
-			</th>
-		</tr>
-		<tr class="download-option">
-			<th>
-				<div class="label-wrapper">
-					<p>STL (Low Detail)</p>
-				</div>
-			</th>
-			<th class="buttonCell">
-				<div class="content-wrapper">
-					<a href="{{.Page.RelPermalink}}models/{{ .Get "fname"}}_LowRes.stl" target="_blank"><button></button></a>
-				</div>
-			</th>
-		</tr>
-		<tr class="download-option">
-			<th>
-				<div class="label-wrapper">
-					<p>3MF</p>
-				</div>
-			</th>
-			<th class="buttonCell">
-				<div class="content-wrapper">
-					<a href="{{.Page.RelPermalink}}models/{{ .Get "fname"}}.3mf" target="_blank"><button></button></a>
-				</div>
-			</th>
-		</tr>
-		<tr class="download-option">
-			<th>
-				<div class="label-wrapper">
-					<p>F3D</p>
-				</div>
-			</th>
-			<th class="buttonCell">
-				<div class="content-wrapper">
-					<a href="{{.Page.RelPermalink}}models/{{ .Get "fname"}}.f3d" target="_blank"><button></button></a>
-				</div>
-			</th>
-		</tr>
-		<tr class="download-option last-row">
-			<th>
-				<div class="label-wrapper">
-					<p>STEP</p>
-				</div>
-			</th>
-			<th class="buttonCell">
-				<div class="content-wrapper">
-					<a href="{{.Page.RelPermalink}}models/{{ .Get "fname"}}.step" target="_blank"><button></button></a>
-				</div>
-			</th>
-		</tr>
+		{{ range $filenameSuffix := $finalSuffixArray }}
+			<tr class="download-option">
+				<td>
+					<div class="label-wrapper">
+						<p>{{ index $labels $filenameSuffix | default $filenameSuffix }}</p>
+					</div>
+				</td>
+				<td class="buttonCell">
+					<div class="content-wrapper">
+						<a href="{{$baseUrl}}{{$filenameSuffix}}" target="_blank"><button></button></a>
+					</div>
+				</td>
+			</tr>
+		{{ end }}
 	</table>
 </div>
-
-<style>
-	.download-option button {
-		background-image: url("{{ .Site.BaseURL }}icons/saveIcon.svg");
-	}
-
-	.download-options-switch[aria-expanded="false"] {
-		background-image: url("{{ .Site.BaseURL }}icons/arrowDown.svg");
-	}
-
-	.download-options-switch[aria-expanded="true"] {		
-		background-image: url("{{ .Site.BaseURL }}icons/arrowUp.svg");
-	}
-</style>

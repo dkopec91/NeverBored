@@ -22,8 +22,26 @@
     document.documentElement.style.setProperty('--dynamic-border-width', `${borderWidth}px`);
   }
 
-  updateBorderWidth();
-  window.addEventListener('resize', updateBorderWidth);
+  document.addEventListener('DOMContentLoaded', function() {
+    window.addEventListener('resize', updateBorderWidth);
+    updateBorderWidth();
+    handleNoSupportForWebGL();
+  });
+
+  function handleNoSupportForWebGL() {
+    const canvas = document.createElement('canvas');
+    if (window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))) {
+      return;
+    }
+
+    Array.from(document.querySelectorAll('model-viewer')).forEach(webglError => {
+      webglError.style.display = 'none';
+    });
+
+    Array.from(document.querySelectorAll('div.modelError')).forEach(webglError => {
+      webglError.style.display = 'flex';
+    });
+  }
 
   function toggleOptions(button) {
     const isExpanded = button.getAttribute("aria-expanded") === "true";

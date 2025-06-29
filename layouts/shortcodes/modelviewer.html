@@ -1,5 +1,18 @@
 <!-- model viewer -->
 <div class="model-viewer-container">
+	
+	<noscript>
+		<div class = "modelError">
+			<img src="{{ .Site.BaseURL }}modelError.png" alt="Failed to load the 3D model." />
+			<p>Failed to load the 3D model. Please enable JavaScript to view it.</p>
+		</div>
+	</noscript>
+
+	<div class = "modelError" style="display: none;">
+			<img src="{{ .Site.BaseURL }}modelError.png" alt="Failed to load the 3D model." />
+			<p>Failed to load the 3D model. Please enable WebGL to view it.</p>
+	</div>
+
 	<model-viewer
 		src="{{.Page.RelPermalink}}images/{{ .Get "src" }}"
 		alt="{{ .Get "alt" }}"

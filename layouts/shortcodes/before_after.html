@@ -1,9 +1,12 @@
+{{ $metadata := readFile (path.Join (replace .Page.File.Path "index.md" "") "images/metadata.txt") }}
+{{ $metadataLines := split $metadata "\n" }}
+
 {{ $maxImageCount := 5 }}
 {{ $beforeImages := 0.0 }}
 {{ $afterImages := 0.0 }}
 
-{{ $beforeImagesPath := path.Join (replace .Page.File.Path "index.md" "") "images" "hq_before[NUMBER].webp"}}
-{{ $afterImagesPath := path.Join (replace .Page.File.Path "index.md" "") "images" "hq_after[NUMBER].webp"}}
+{{ $beforeImagesPath := path.Join (replace .Page.File.Path "index.md" "") "images" "hq_before[NUMBER].webp" }}
+{{ $afterImagesPath := path.Join (replace .Page.File.Path "index.md" "") "images" "hq_after[NUMBER].webp" }}
 
 {{ range $num := (seq $maxImageCount) }}
 
@@ -25,33 +28,41 @@
 {{ if gt $totalImageCount 0 }}
 
     {{ $beforeRatio := div $beforeImages $totalImageCount 0.01 }}
-    {{ $beforeRatio = math.Round $beforeRatio }}
+    {{ $beforeRatio = div (math.Round (mul $beforeRatio 100)) 100 }}
 
-    <table>
+    <table class="img-table">
         <tr>
             <th style="text-align:center; width: {{ $beforeRatio }}%" colspan={{ $beforeImages }}>Before</th>
             <th style="text-align:center" colspan={{ $afterImages }}>After</th>
         </tr>
         <tr>
             {{ range $num := (seq $beforeImages) }}
+                {{ $currentMetadataLine := split (index $metadataLines (sub . 1)) "|" }}
                 {{ $path := replace $beforeImagesPath "[NUMBER]" . }}
-                {{if fileExists $path}}
+                {{ if fileExists $path }}
                     <td>
-                        <img alt = "Before"
-                            src = "{{$.Page.RelPermalink}}images/lq_before{{ . }}.webp"
-                            data-zoom-src="{{$.Page.RelPermalink}}images/hq_before{{ . }}.webp"
-                            class = "medium-zoom-image"	/>
+                        {{ partial "image.html" (dict
+                            "alt" (index $currentMetadataLine 0)
+                            "fileLq" (printf "lq_before%d.webp" .)
+                            "fileHq" (printf "hq_before%d.webp" .)
+                            "caption" (index $currentMetadataLine 1)
+                            "page" $.Page)
+                        }}
                     </td>
                 {{ end }}
             {{ end }}
             {{ range $num := (seq $afterImages) }}
+                {{ $currentMetadataLine := split (index $metadataLines (sub (add (int $beforeImages) . ) 1)) "|" }}
                 {{ $path := replace $afterImagesPath "[NUMBER]" . }}
-                {{if fileExists $path}}
+                {{ if fileExists $path }}
                     <td>
-                        <img alt = "After"
-                            src = "{{$.Page.RelPermalink}}images/lq_after{{ . }}.webp"
-                            data-zoom-src="{{$.Page.RelPermalink}}images/hq_after{{ . }}.webp"
-                            class = "medium-zoom-image"	/>
+                        {{ partial "image.html" (dict
+                            "alt" (index $currentMetadataLine 0)
+                            "fileLq" (printf "lq_after%d.webp" .)
+                            "fileHq" (printf "hq_after%d.webp" .)
+                            "caption" (index $currentMetadataLine 1)
+                            "page" $.Page)
+                        }}
                     </td>
                 {{ end }}
             {{ end }}

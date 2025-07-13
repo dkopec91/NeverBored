@@ -1,5 +1,8 @@
 <!-- zoomable -->
-<img alt = "{{ .Get "alt" }}"
-	src = "{{.Page.RelPermalink}}images/lq_{{ .Get "src" }}"
-	data-zoom-src="{{.Page.RelPermalink}}images/hq_{{ .Get "src" }}"
-	class = "medium-zoom-image"	/>
+{{ partial "image.html" (dict
+	"alt" (.Get "alt" )
+	"fileLq" (.Get "fileLq")
+	"fileHq" (.Get "fileHq")
+	"caption" (.Get "caption")
+	"page" $.Page)
+}}

@@ -1,3 +1,6 @@
+{{ $metadata := readFile (path.Join (replace .Page.File.Path "index.md" "") "images/metadata.txt") }}
+{{ $metadataLines := split $metadata "\n" }}
+
 {{ $maxImageCount := 30 }}
 {{ $imagesCount := 0 }}
 {{ $cellCount := 1 }}
@@ -24,7 +27,7 @@
     {{ $startRowIndex := 1 }}
     {{ $endRowIndex := $cellCount }}
 
-    <table>
+    <table class="img-table">
         <tr>
             <th style="text-align:center" colspan={{ $cellCount }}>{{ $headerName }}</th>
         </tr>
@@ -35,12 +38,15 @@
             {{ if eq $num $startRowIndex }}
                 <tr>
             {{ end }}
-
+                {{ $currentMetadataLine := split (index $metadataLines (sub $num 1)) "|" }}
                     <td>
-                        <img alt = "{{ $headerName }}: Image {{ . }}/{{ $imagesCount }}"
-                            src = "{{$.Page.RelPermalink}}images/{{$fileLq}}"
-                            data-zoom-src="{{$.Page.RelPermalink}}images/{{$fileHq}}"
-                            class = "medium-zoom-image"	/>
+                        {{ partial "image.html" (dict
+                            "alt" (index $currentMetadataLine 0)
+                            "fileLq" $fileLq
+                            "fileHq" $fileHq
+                            "caption" (index $currentMetadataLine 1)
+                            "page" $.Page)
+                        }}
                     </td>
             
             {{ if eq $num $endRowIndex }}

@@ -1,10 +1,15 @@
-:root {
-  --dynamic-border-width: 4px;
+@media (max-width: 800px) {
+  .medium-zoom-image {
+    border-width: 0.75vi;
+    padding: 0.75vi;
+  }
 }
 
-.medium-zoom-image {
-  border-width: var(--dynamic-border-width);
-  padding: var(--dynamic-border-width);
+@media (min-width: 800px) {
+  .medium-zoom-image {
+    border-width: 6px;
+    padding: 6px;
+  }
 }
 
 .medium-zoom-overlay,

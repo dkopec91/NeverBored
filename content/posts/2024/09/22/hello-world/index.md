@@ -6,4 +6,9 @@ showFullContent: true
 ---
 Nothing to see here..
 
-{{< zoomable src="hello-world.webp" alt="Hello world!" >}}
+{{< zoomable
+    alt="A photo of a European fallow deer" 
+    fileLq="lq_hello-world.webp"
+    fileHq="hq_hello-world.webp"
+    caption="In Polish, the European fallow deer (Dama dama) goes by the name Daniel"
+>}}

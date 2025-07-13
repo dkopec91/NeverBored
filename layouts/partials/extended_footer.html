@@ -13,18 +13,7 @@
     });
   });
 
-  function updateBorderWidth() {
-    const screenWidth = window.innerWidth;
-    const dynamicStart = 400;
-    const dynamicEnd = 800;
-
-    const borderWidth = Math.min(8, Math.max(1, 1 + Math.floor((screenWidth - dynamicStart) / ((dynamicEnd - dynamicStart) / 7))));
-    document.documentElement.style.setProperty('--dynamic-border-width', `${borderWidth}px`);
-  }
-
   document.addEventListener('DOMContentLoaded', function() {
-    window.addEventListener('resize', updateBorderWidth);
-    updateBorderWidth();
     handleNoSupportForWebGL();
   });
 

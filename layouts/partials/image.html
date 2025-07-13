@@ -1,0 +1,20 @@
+<figure>
+    <noscript>
+        <a href="{{ .page.RelPermalink }}images/{{ .fileHq }}" class="img-link" target="_blank">
+    </noscript>
+
+        <img alt = "{{ replaceRE "[\\r\\n]+" "" .alt }}"
+            src = "{{ .page.RelPermalink }}images/{{ .fileLq }}"
+            data-zoom-src="{{ .page.RelPermalink }}images/{{ .fileHq }}"
+            class = "medium-zoom-image"	/>
+
+    <noscript>
+        </a>
+    </noscript>
+
+    {{ if ne (replaceRE "[\\s]+" "" .caption) "" }}
+        <figcaption>
+            {{ .caption }}
+        </figcaption>
+    {{ end }}
+</figure>

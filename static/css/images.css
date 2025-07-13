@@ -1,0 +1,35 @@
+figure {
+  margin: 20px 0px;
+  display: inline-block;
+}
+
+figcaption {
+  margin-top: 0 !important;
+  font-size: 0.9em !important;
+  padding: 0 5px 5px 5px;
+  flex: 1;
+}
+
+.img-table {
+  width: 100%;
+  height: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.img-table figure {
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.img-table figure img {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.img-link {
+  cursor: zoom-in;
+}

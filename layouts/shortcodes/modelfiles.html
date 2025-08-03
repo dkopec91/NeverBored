@@ -43,19 +43,20 @@
 	{{ end }}
 
 
-<div style="overflow-x:auto">
-	<table class="model-download">
-		<tr class="header-row">
-			<td>
-				<a href="https://www.makeronline.com/en/model/{{ .Get "mkrs" }}" target="_blank" rel="noopener">Get from MakerOnline.com</a>
-			</td>
-			<td class="buttonCell">
-				<button class="download-options-switch" onclick="toggleOptions(this)"
-					aria-label="Toggle download options"
-					aria-expanded="false"></button>
-			</td>
-		</tr>
-		{{ range $filenameSuffix := $finalSuffixArray }}
+<div class="model-download-wrapper-frame hide-when-no-js">
+	<div class="model-download-wrapper scrollable-element">
+		<table class="model-download">
+			<tr class="header-row">
+				<td>
+					<a href="https://www.makeronline.com/en/model/{{ .Get " mkrs" }}" target="_blank" rel="noopener">Get from MakerOnline.com</a>
+				</td>
+				<td class="buttonCell">
+					<button class="download-options-switch" onclick="toggleOptions(this)"
+						aria-label="Toggle download options"
+						aria-expanded="false"></button>
+				</td>
+			</tr>
+			{{ range $filenameSuffix := $finalSuffixArray }}
 			<tr class="download-option">
 				<td>
 					<div class="label-wrapper">
@@ -68,6 +69,7 @@
 					</div>
 				</td>
 			</tr>
-		{{ end }}
-	</table>
+			{{ end }}
+		</table>
+	</div>
 </div>

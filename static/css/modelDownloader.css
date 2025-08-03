@@ -1,5 +1,25 @@
+@media(max-width: 335px) {
+    .model-download-wrapper-frame {
+        width: 100%;
+        border-style: solid;
+        border-width: 0 1px 0 1px;
+        border-color: var(--accent);
+    }
+
+    .model-download tr:last-child td {
+        border-bottom-width: 1px !important;
+    }
+}
+
+.model-download-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
 .model-download {
     width: 100%;
+    min-width: 280px;
+    border-bottom: 0;
     border-collapse: collapse;
 }
 
@@ -9,14 +29,12 @@
     padding: 0;
 }
 
-.model-download tr:last-child {
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
+.model-download tr:last-child td {
+    border-bottom-width: 0px;
 }
 
 .model-download button {
     margin: 0;
-    padding: 0;
     width: 100%;
     height: 100%;
 }
@@ -43,6 +61,7 @@
 
 .download-option.expanded td {
     border-width: 1px;
+    padding-bottom: 1px;
 }
 
 .download-option.expanded:hover {
@@ -65,6 +84,7 @@
 
 .header-row td {
     line-height: 0;
+    border-bottom: 0;
     height: 45px !important;
 }
 
@@ -86,6 +106,33 @@
     background-image: url("../icons/arrowDown.svg");
 }
 
-.download-options-switch[aria-expanded="true"] {		
+.download-options-switch[aria-expanded="true"] {
     background-image: url("../icons/arrowUp.svg");
+}
+
+.hide-when-no-js {
+    display: none;
+}
+
+.scrollable-element {
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) var(--background);
+}
+
+.scrollable-element::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.scrollable-element::-webkit-scrollbar-track {
+    background: var(--background);
+}
+
+.scrollable-element::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 4px;
+}
+
+.scrollable-element::-webkit-scrollbar-thumb:hover {
+    background: #d6ac52;
 }

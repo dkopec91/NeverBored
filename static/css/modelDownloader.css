@@ -23,6 +23,10 @@
     border-collapse: collapse;
 }
 
+table.model-download {
+    border-style: solid;
+}
+
 .model-download td {
     text-align: center;
     border-style: solid;
@@ -39,7 +43,7 @@
     height: 100%;
 }
 
-.buttonCell {
+.button-cell {
     width: 45px;
 }
 
@@ -56,7 +60,7 @@
 }
 
 .download-option td {
-    border-width: 0;
+    border-width: 0 1px 0 1px;
 }
 
 .download-option.expanded td {

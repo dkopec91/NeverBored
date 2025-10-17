@@ -21,6 +21,13 @@
   function handleNoSupportForWebGL() {
     const canvas = document.createElement('canvas');
     if (window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))) {
+      
+      setTimeout(function() {
+        Array.from(document.querySelectorAll('div.loadingPoster')).forEach(loading => {
+          loading.style.display = 'flex';
+        });
+      }, 250);
+
       return;
     }
 

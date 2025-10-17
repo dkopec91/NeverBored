@@ -4,13 +4,13 @@
 	<noscript>
 		<div class = "modelError">
 			<img src="{{ .Site.BaseURL }}modelError.png" alt="Failed to load the 3D model." />
-			<p>Failed to load the 3D model. Please enable JavaScript to view it.</p>
+			<p>Failed to load the 3D model. Please enable JavaScript.</p>
 		</div>
 	</noscript>
 
 	<div class = "modelError" style="display: none;">
 			<img src="{{ .Site.BaseURL }}modelError.png" alt="Failed to load the 3D model." />
-			<p>Failed to load the 3D model. Please enable WebGL to view it.</p>
+			<p>Failed to load the 3D model. Please enable WebGL.</p>
 	</div>
 
 	<model-viewer
@@ -23,5 +23,9 @@
 		powerPreference="low-power"
 		camera-controls
 		disable-tap
-		auto-rotate />
+		auto-rotate>
+			<div class="loadingPoster" slot="poster">
+				<p>Loading the 3D model..</p>
+			</div>
+		</model-viewer>
 </div>

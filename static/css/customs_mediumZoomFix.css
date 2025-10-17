@@ -2,6 +2,7 @@
   .medium-zoom-image {
     border-width: 0.75vi;
     padding: 0.75vi;
+    aspect-ratio: 1;
   }
 }
 
@@ -9,6 +10,7 @@
   .medium-zoom-image {
     border-width: 6px;
     padding: 6px;
+    aspect-ratio: 1;
   }
 }
 

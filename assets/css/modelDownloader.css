@@ -72,6 +72,10 @@ table.model-download {
     background-color: color-mix(in srgb, var(--accent) 10%, transparent);
 }
 
+.download-option.expanded:hover .download-button {
+    background-color: color-mix(in srgb, var(--accent) 90%, transparent);
+}
+
 .download-option.expanded .content-wrapper {
     padding: 1px;
 }
@@ -92,7 +96,7 @@ table.model-download {
     height: 45px !important;
 }
 
-.download-option button,
+.download-option td div a button,
 .download-options-switch[aria-expanded="false"],
 .download-options-switch[aria-expanded="true"] {
     background-position: center;
@@ -102,7 +106,7 @@ table.model-download {
     border: none;
 }
 
-.download-option button {
+.button-cell .download-button {
     background-image: url("../icons/saveIcon.svg");
 }
 

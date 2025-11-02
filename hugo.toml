@@ -4,7 +4,7 @@ languageCode = 'en-us'
 title = 'NeverBored'
 theme = 'terminal'
 paginate = 5
-copyright = '© 2024-2025 <a href="https://danielkopec.eu">Daniel Kopeć</a>. All rights reserved.'
+copyright = '© 2024-2025 <a href="https://danielkopec.eu">Daniel Kopeć</a><br>All rights reserved'
 
 [params]
   # dir name of your main content (default is `content/posts`).

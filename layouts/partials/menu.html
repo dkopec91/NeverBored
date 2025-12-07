@@ -1,0 +1,10 @@
+<details class="menu">
+  <summary class="menu__trigger">Menu&nbsp;</summary>
+  <ul class="menu__dropdown">
+    {{ range $.Site.Menus.main }}
+      {{ if not .HasChildren }}
+        <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+      {{ end }}
+    {{ end }}
+  </ul>
+</details>

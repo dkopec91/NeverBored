@@ -1,6 +1,8 @@
 <!-- zoomable -->
-{{ partial "image.html" (dict
+{{ partial "popover_image.html" (dict
 	"alt" (.Get "alt" )
+	"id" (.Get "id" )
+	"title" $.Page.Title
 	"fileLq" (.Get "fileLq")
 	"fileHq" (.Get "fileHq")
 	"caption" (.Get "caption")

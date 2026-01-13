@@ -8,6 +8,7 @@ Nothing to see here..
 
 {{< zoomable
     alt="A photo of a European fallow deer" 
+    id="european_fallow_deer"
     fileLq="lq_hello-world.webp"
     fileHq="hq_hello-world.webp"
     caption="In Polish, the European fallow deer (Dama dama) goes by the name Daniel"

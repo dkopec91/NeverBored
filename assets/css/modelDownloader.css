@@ -122,26 +122,3 @@ table.model-download {
 .hide-when-no-js {
     display: none;
 }
-
-.scrollable-element {
-    scrollbar-width: thin;
-    scrollbar-color: var(--accent) var(--background);
-}
-
-.scrollable-element::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-.scrollable-element::-webkit-scrollbar-track {
-    background: var(--background);
-}
-
-.scrollable-element::-webkit-scrollbar-thumb {
-    background: var(--accent);
-    border-radius: 4px;
-}
-
-.scrollable-element::-webkit-scrollbar-thumb:hover {
-    background: #d6ac52;
-}

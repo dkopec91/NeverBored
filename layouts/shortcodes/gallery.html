@@ -29,7 +29,7 @@
 
     <table class="img-table">
         <tr>
-            <th style="text-align:center" colspan={{ $cellCount }}>{{ $headerName }}</th>
+            <th colspan={{ $cellCount }}>{{ $headerName }}</th>
         </tr>
         {{ range $num := (seq $imagesCount) }}
             {{ $fileLq := replace $fileNameLq "[NUMBER]" . }}
@@ -38,16 +38,21 @@
             {{ if eq $num $startRowIndex }}
                 <tr>
             {{ end }}
+                    
                 {{ $currentMetadataLine := split (index $metadataLines (sub $num 1)) "|" }}
-                    <td>
-                        {{ partial "image.html" (dict
-                            "alt" (index $currentMetadataLine 0)
-                            "fileLq" $fileLq
-                            "fileHq" $fileHq
-                            "caption" (index $currentMetadataLine 1)
-                            "page" $.Page)
-                        }}
-                    </td>
+                <td>
+                    {{ $id := printf "%simg_%d" (replace (replace (replace $.Page.RelPermalink "/NeverBored/posts/" "") "/" "_") "." "_") $num }}
+
+                    {{ partial "popover_image.html" (dict
+                        "alt" (index $currentMetadataLine 0)
+                        "id" $id
+                        "title" $.Page.Title
+                        "fileLq" $fileLq
+                        "fileHq" $fileHq
+                        "caption" (index $currentMetadataLine 1)
+                        "page" $.Page)
+                    }}
+                </td>
             
             {{ if eq $num $endRowIndex }}
                 </tr>

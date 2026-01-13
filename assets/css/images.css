@@ -17,11 +17,12 @@ figcaption {
   border-collapse: collapse;
 }
 
-.img-table figure {
-  height: 100%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
+.img-table th {
+  text-align: center;
+}
+
+.img-table td:has(.popover-button) {
+  line-height: 0;
 }
 
 .img-table figure img {

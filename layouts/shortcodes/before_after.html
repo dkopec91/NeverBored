@@ -32,8 +32,8 @@
 
     <table class="img-table">
         <tr>
-            <th style="text-align:center; width: {{ $beforeRatio }}%" colspan={{ $beforeImages }}>Before</th>
-            <th style="text-align:center" colspan={{ $afterImages }}>After</th>
+            <th style="width: {{ $beforeRatio }}%" colspan={{ $beforeImages }}>Before</th>
+            <th colspan={{ $afterImages }}>After</th>
         </tr>
         <tr>
             {{ range $num := (seq $beforeImages) }}
@@ -41,8 +41,12 @@
                 {{ $path := replace $beforeImagesPath "[NUMBER]" . }}
                 {{ if fileExists $path }}
                     <td>
-                        {{ partial "image.html" (dict
+                        {{ $id := printf "%simg_b_%d" (replace (replace (replace $.Page.RelPermalink "/NeverBored/posts/" "") "/" "_") "." "_") $num }}
+
+                        {{ partial "popover_image.html" (dict
                             "alt" (index $currentMetadataLine 0)
+                            "id" $id
+                            "title" (printf "%s %s" $.Page.Title " - Before")
                             "fileLq" (printf "lq_before%d.webp" .)
                             "fileHq" (printf "hq_before%d.webp" .)
                             "caption" (index $currentMetadataLine 1)
@@ -56,8 +60,12 @@
                 {{ $path := replace $afterImagesPath "[NUMBER]" . }}
                 {{ if fileExists $path }}
                     <td>
-                        {{ partial "image.html" (dict
+                        {{ $id := printf "%simg_a_%d" (replace (replace (replace $.Page.RelPermalink "/NeverBored/posts/" "") "/" "_") "." "_") $num }}
+
+                        {{ partial "popover_image.html" (dict
                             "alt" (index $currentMetadataLine 0)
+                            "id" $id
+                            "title" (printf "%s %s" $.Page.Title " - After")
                             "fileLq" (printf "lq_after%d.webp" .)
                             "fileHq" (printf "hq_after%d.webp" .)
                             "caption" (index $currentMetadataLine 1)

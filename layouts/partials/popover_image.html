@@ -1,0 +1,42 @@
+{{ $id := .id }}
+{{ $alt := .alt }}
+{{ $caption := .caption }}
+
+<button class="popover-button" popovertarget="{{ $id }}">
+    <figure>
+        <img class="popover-thumbnail"
+            src="{{ .page.RelPermalink }}images/{{ .fileLq }}"
+            alt="{{ replaceRE " [\\r\\n]+" "" $alt }}" />
+            {{ if ne (replaceRE "[\\s]+" "" $caption) "" }}
+                <figcaption>
+                    {{ $caption }}
+                </figcaption>
+            {{ end }}
+    </figure>
+</button>
+
+<div id="{{ $id }}" class="popover-window" popover>
+    <div class="popover-title-bar">
+        <span class="popover-title">{{ .title }}</span>
+        <button class="popover-close-button"
+            popovertarget="{{ $id }}"
+            popovertargetaction="hide">&times;</button>
+    </div>
+    <div class="popover-content">
+        <div class="loading-container">
+            <figure>
+                <img class="popover-image"
+                    src="{{ .page.RelPermalink }}images/{{ .fileHq }}"
+                    alt="{{ replaceRE " [\\r\\n]+" "" $alt }}"
+                    loading="lazy"  />
+                {{ if ne (replaceRE "[\\s]+" "" $caption) "" }}
+                    <div class="scrollable-element inverted-colors">
+                        <figcaption>
+                            {{ $caption }}
+                        </figcaption>
+                    </div> 
+                {{ end }}
+            </figure>
+        </div>
+    </div>
+</div>

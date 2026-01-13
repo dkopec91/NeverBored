@@ -1,0 +1,8 @@
+.scrollable-element {
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) var(--background);
+}
+
+.scrollable-element.inverted-colors {
+    scrollbar-color: var(--background) var(--accent);
+}

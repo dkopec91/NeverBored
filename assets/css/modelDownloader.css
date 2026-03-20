@@ -2,12 +2,12 @@
     .model-download-wrapper-frame {
         width: 100%;
         border-style: solid;
-        border-width: 0 1px 0 1px;
+        border-width: 2px;
         border-color: var(--accent);
     }
 
     .model-download tr:last-child td {
-        border-bottom-width: 1px !important;
+        border-bottom-width: 2px !important;
     }
 }
 
@@ -61,11 +61,11 @@ table.model-download {
 }
 
 .download-option td {
-    border-width: 0 1px 0 1px;
+    border-width: 0 2px 0 2px;
 }
 
 .download-option.expanded td {
-    border-width: 1px;
+    border-width: 2px;
     padding-bottom: 1px;
 }
 
@@ -93,7 +93,7 @@ table.model-download {
 
 .header-row td {
     line-height: 0;
-    border-bottom: 0;
+    border-width: 2px 2px 0 2px;
     height: 45px !important;
 }
 

@@ -60,7 +60,7 @@ copyright = '© 2024-2025 <a href="https://danielkopec.eu">Daniel Kopeć</a><br>
     title = "NeverBored"
 
     [languages.en.params]
-      subtitle = "Some of the things I do"
+      subtitle = "A hobby website dedicated to 3D printing, creative problem-solving, and building useful or just plain fun things."
       owner = ""
       keywords = ""
       copyright = ""

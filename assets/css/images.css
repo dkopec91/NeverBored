@@ -21,6 +21,12 @@ figcaption {
   text-align: center;
 }
 
+.img-table thead,
+.img-table tbody {
+  text-align: center;
+  border: 2px solid var(--accent);
+}
+
 .img-table td:has(.popover-button) {
   line-height: 0;
 }

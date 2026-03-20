@@ -28,38 +28,42 @@
     {{ $endRowIndex := $cellCount }}
 
     <table class="img-table">
-        <tr>
-            <th colspan={{ $cellCount }}>{{ $headerName }}</th>
-        </tr>
-        {{ range $num := (seq $imagesCount) }}
-            {{ $fileLq := replace $fileNameLq "[NUMBER]" . }}
-            {{ $fileHq := replace $fileNameHq "[NUMBER]" . }}
+       <thead>
+            <tr>
+                <th colspan={{ $cellCount }}>{{ $headerName }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{ range $num := (seq $imagesCount) }}
+                {{ $fileLq := replace $fileNameLq "[NUMBER]" . }}
+                {{ $fileHq := replace $fileNameHq "[NUMBER]" . }}
 
-            {{ if eq $num $startRowIndex }}
-                <tr>
-            {{ end }}
-                    
-                {{ $currentMetadataLine := split (index $metadataLines (sub $num 1)) "|" }}
-                <td>
-                    {{ $id := printf "%simg_%d" (replace (replace (replace $.Page.RelPermalink "/NeverBored/posts/" "") "/" "_") "." "_") $num }}
+                {{ if eq $num $startRowIndex }}
+                    <tr>
+                {{ end }}
 
-                    {{ partial "popover_image.html" (dict
-                        "alt" (index $currentMetadataLine 0)
-                        "id" $id
-                        "title" $.Page.Title
-                        "fileLq" $fileLq
-                        "fileHq" $fileHq
-                        "caption" (index $currentMetadataLine 1)
-                        "page" $.Page)
-                    }}
-                </td>
-            
-            {{ if eq $num $endRowIndex }}
-                </tr>
-                {{ $startRowIndex = add $startRowIndex $cellCount }}
-                {{ $endRowIndex = add $endRowIndex $cellCount }}
+                    {{ $currentMetadataLine := split (index $metadataLines (sub $num 1)) "|" }}
+                    <td>
+                        {{ $id := printf "%simg_%d" (replace (replace (replace $.Page.RelPermalink "/NeverBored/posts/" "") "/" "_") "." "_") $num }}
+
+                        {{ partial "popover_image.html" (dict
+                            "alt" (index $currentMetadataLine 0)
+                            "id" $id
+                            "title" $.Page.Title
+                            "fileLq" $fileLq
+                            "fileHq" $fileHq
+                            "caption" (index $currentMetadataLine 1)
+                            "page" $.Page)
+                        }}
+                    </td>
+
+                {{ if eq $num $endRowIndex }}
+                    </tr>
+                    {{ $startRowIndex = add $startRowIndex $cellCount }}
+                    {{ $endRowIndex = add $endRowIndex $cellCount }}
+                {{ end }}
             {{ end }}
-        {{ end }}
+        </tbody>
     </table>
 
 {{ end }}

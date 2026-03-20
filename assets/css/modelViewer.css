@@ -1,9 +1,14 @@
-.model-viewer-container{
+.model-viewer-container {
 	margin-bottom: 20px;
-	border: 1px solid var(--accent);
+	border: 2px solid var(--accent);
 	border-radius: var(--radius);
 	min-height: min(85vw, 750px);
 	max-height: 800px;
+}
+
+.model-viewer-container:has(+ .parts-list-wrapper-frame) {
+	margin-bottom: 0;
+	border-bottom: none;
 }
 
 model-viewer {

@@ -1,0 +1,47 @@
+.parts-list-wrapper-frame {
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 0;
+    border: 2px solid var(--accent);
+    border-top: none;
+}
+
+.parts-list-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.parts-list {
+    width: 100%;
+    line-height: 1.2;
+    border: none;
+
+    .qty {
+        width: 60px;
+        text-align: center;
+    }
+
+    thead {
+        border-bottom: 2px dashed var(--accent);
+
+        th {
+            padding-top: 7px;
+            padding-bottom: 7px;
+        }
+    }
+
+    tbody tr:first-child td {
+        padding-top: 10px !important;
+    }
+
+    tbody tr:last-child td {
+        padding-bottom: 10px !important;
+    }
+
+    th,
+    td {
+        border: none;
+        padding: 5px;
+        font-size: clamp(0.8rem, 2vw, 1rem);
+    }
+}

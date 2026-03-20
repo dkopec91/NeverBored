@@ -1,0 +1,25 @@
+<!-- parts list -->
+{{ $parts := .Params }}
+<div class="parts-list-wrapper-frame">
+	<div class="parts-list-wrapper scrollable-element">
+		<table class="parts-list">
+			<thead>
+				<tr>
+					<th class="qty">Qty.</th>
+					<th>Item</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{ range $parts }}
+				<tr>
+					{{ $desc := split . "|" }}
+					<td class="qty">{{ index $desc 0 }}</td>
+					<td>{{ index $desc 1 }}</td>
+					<td>{{ index $desc 2 }}</td>
+				</tr>
+				{{ end }}
+			</tbody>
+		</table>
+	</div>
+</div>

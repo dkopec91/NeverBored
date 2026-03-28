@@ -1,7 +1,7 @@
 <script type="module" src="{{ .Site.BaseURL }}scripts/model-viewer.min.js"></script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function () {
     handleNoSupportForWebGL();
     handleJSReliantElements();
   });
@@ -9,8 +9,8 @@
   function handleNoSupportForWebGL() {
     const canvas = document.createElement('canvas');
     if (window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'))) {
-      
-      setTimeout(function() {
+
+      setTimeout(function () {
         Array.from(document.querySelectorAll('div.loadingPoster')).forEach(loading => {
           loading.style.display = 'flex';
         });
@@ -29,7 +29,7 @@
   }
 
   function handleJSReliantElements() {
-      Array.from(document.querySelectorAll('.hide-when-no-js')).forEach(element => {
+    Array.from(document.querySelectorAll('.hide-when-no-js')).forEach(element => {
       element.classList.remove('hide-when-no-js');
     });
   }
@@ -38,10 +38,12 @@
     const isExpanded = button.getAttribute("aria-expanded") === "true";
     button.setAttribute("aria-expanded", !isExpanded);
 
-    const table = button.closest('.model-download');    
+    const table = button.closest('.model-download');
     table.querySelectorAll('.download-option').forEach(row => {
-        row.classList.toggle('expanded');
+      row.classList.toggle('expanded');
     });
   }
 
 </script>
+
+<div id="click-through-blocker"></div>

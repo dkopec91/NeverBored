@@ -170,3 +170,16 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+#click-through-blocker {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: all;
+    background: transparent;
+}
+ 
+body:has([popover]:popover-open) #click-through-blocker {
+    display: block;
+}

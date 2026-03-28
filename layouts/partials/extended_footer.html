@@ -4,6 +4,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     handleNoSupportForWebGL();
     handleJSReliantElements();
+    handlePopoverClickThroughBlocker();
   });
 
   function handleNoSupportForWebGL() {
@@ -44,6 +45,74 @@
     });
   }
 
+  function handlePopoverClickThroughBlocker() {
+    const blocker = document.getElementById('click-through-blocker');
+    if (!blocker) return;
+
+    const isAnyPopoverOpen = () => {
+      const popovers = Array.from(document.querySelectorAll('[popover]'));
+      let anyOpen = popovers.some(p => {
+        try {
+          return p.matches(':popover-open');
+        } catch (e) {
+          return false;
+        }
+      });
+
+      if (!anyOpen) {
+        anyOpen = popovers.some(p => {
+          try {
+            const style = window.getComputedStyle(p);
+            if (style.display === 'none' || style.visibility === 'hidden') return false;
+            const r = p.getBoundingClientRect();
+            return r.width > 0 && r.height > 0;
+          } catch (e) {
+            return false;
+          }
+        });
+      }
+      return anyOpen;
+    };
+
+    const updateBlockerVisibility = () => {
+      blocker.style.display = isAnyPopoverOpen() ? 'block' : 'none';
+    };
+
+    const stop = function (e) {
+      if (!isAnyPopoverOpen()) {
+        blocker.style.display = 'none';
+        return;
+      }
+      if (e.cancelable) e.preventDefault();
+      e.stopPropagation();
+    };
+
+    ['pointerdown', 'pointerup', 'pointermove', 'touchstart', 'touchend', 'click'].forEach(evt => {
+      blocker.addEventListener(evt, stop, { passive: false, capture: true });
+    });
+
+    document.querySelectorAll('.popover-button, .popover-close-button').forEach(btn => {
+      btn.addEventListener('click', function () {
+        setTimeout(updateBlockerVisibility, 0);
+      });
+    });
+
+    blocker.addEventListener('click', function (e) {
+      document.querySelectorAll('[popover]').forEach(p => {
+        const closeBtn = p.querySelector('[popovertargetaction="hide"]');
+        if (closeBtn) closeBtn.click();
+      });
+      setTimeout(updateBlockerVisibility, 0);
+    }, { passive: false, capture: true });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' || e.key === 'Esc') {
+        setTimeout(updateBlockerVisibility, 0);
+      }
+    }, { passive: true });
+
+    setTimeout(updateBlockerVisibility, 0);
+  }
 </script>
 
 <div id="click-through-blocker"></div>

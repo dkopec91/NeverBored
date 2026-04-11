@@ -1,8 +1,9 @@
 ---
 title: "Jet Fan Nozzle"
+description: "A 3D-printed jet fan nozzle. It replaces the manufacturer's unreliable magnetic nozzle."
+tags: [ '3D Print', 'Functional']
 date: 2025-10-14T05:38:41+02:00
 draft: false
-tags: [ '3D Print', 'Functional']
 showFullContent: true
 ---
 

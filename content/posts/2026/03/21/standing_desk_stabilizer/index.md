@@ -1,8 +1,9 @@
 ---
 title: "Standing desk stabilizer"
+description: "A custom-designed 3D-printed standing desk stabilizer engineered to reduce wobble and improve the stability of height-adjustable desks. A simple, practical workspace upgrade."
+tags: [ '3D Print', 'Functional', 'Workspace']
 date: 2026-03-21T08:21:21+01:00
 draft: false
-tags: [ '3D Print', 'Functional', 'Workspace']
 showFullContent: true
 ---
 
@@ -13,7 +14,7 @@ showFullContent: true
     prependDownloads="_STLs.zip"
     extendLabels="_STLs.zip=STL files - ZIP" >}}
 
-{{< modelviewer src="StandingDeskStabilizer.glb" alt="ALT" >}}
+{{< modelviewer src="StandingDeskStabilizer.glb" alt="A 3D visualization of a standing desk stabilizer" >}}
 
 {{< partslist 
     "1|M4 screw|37mm total length"

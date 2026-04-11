@@ -1,8 +1,9 @@
 ---
 title: "Container for 18650 cells with inspection holes"
+description: "A container for 18650 cells with inspection holes."
+tags: [ '3D Print', 'Functional']
 date: 2025-08-31T14:28:46+02:00
 draft: false
-tags: [ '3D Print', 'Functional']
 showFullContent: true
 ---
 
@@ -13,6 +14,6 @@ showFullContent: true
     prependDownloads="_STLs.zip"
     extendLabels="_STLs.zip=STL files - ZIP" >}}
 
-{{< modelviewer src="Container_18650.glb" alt="A 3D model of 18650 cells container" >}}
+{{< modelviewer src="Container_18650.glb" alt="A 3D visualization of 18650 cells container" >}}
 
 {{< gallery >}}

@@ -1,6 +1,6 @@
 ---
 title: "Keyfob frog case"
-description: "Keyfob frog case"
+description: "A 3D-printed frog keyfob case designed to hold a single RFID token. A fun and practical accessory for car keys or keychains."
 date: 2026-01-03T00:23:44+01:00
 draft: false
 tags: [ '3D Print', 'Decorative']

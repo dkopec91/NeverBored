@@ -1,8 +1,9 @@
 ---
 title: "Adjustable Dumbbell Stand"
+description: "An adjustable dumbbell stand that keeps dumbbells from rolling around."
+tags: [ '3D Print', 'Functional']
 date: 2025-09-30T23:25:47+02:00
 draft: false
-tags: [ '3D Print', 'Functional']
 showFullContent: true
 ---
 

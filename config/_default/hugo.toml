@@ -1,6 +1,6 @@
 baseURL = 'https://www.danielkopec.eu/NeverBored/'
 
-languageCode = 'en-us'
+locale = 'en-us'
 title = 'NeverBored'
 theme = 'terminal'
 paginate = 5
@@ -57,7 +57,7 @@ copyright = '© 2024-2026 <a href="https://danielkopec.eu">Daniel Kopeć</a><br>
 
 [languages]
   [languages.en]
-    languageName = "English"
+    label = "English"
     title = "NeverBored"
 
     [languages.en.params]
